@@ -1,0 +1,33 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista produktów</h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena za sztuke</th>
+            <th>Wycofano</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let prod of produkt) { %>
+            <tr>
+                <td><%= prod.nazwa %></td>
+                <td><%= prod.cenaZaSztuke %></td>
+                <td><%= prod.wycofano %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li><a href="/produkty/details/<%= prod._id %>" class="list-actions-button-details">Szczegóły</a></li>
+                        <li><a href="/produkty/edit/<%= prod._id %>" class="list-actions-button-edit">Edytuj</a></li>
+                        <li><a href="/produkty/delete/<%= prod._id %>" class="list-actions-button-delete">Usuń</a></li>
+
+                    </ul>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="produkty/add" class="button-add">Dodaj nowy Produkt</a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

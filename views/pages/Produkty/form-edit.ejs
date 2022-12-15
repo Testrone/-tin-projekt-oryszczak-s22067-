@@ -1,0 +1,27 @@
+<%- include('../../fragments/header.ejs')%>
+<main>
+    <script type="application/javascript" src="public/js/validationProdukty.js"></script>
+    <h2>Produkt</h2>
+    <form class="form">
+
+
+        <label for="Nazwa">Nazwa:  *</label>
+        <input type="text" name="Nazwa" id="Nazwa" value="burak" required/>
+        <span id="error"></span>
+
+        <label for="CenaZaSztuke">Cena za sztuke:  *</label>
+        <input type="number" name="CenaZaSztuke" id="CenaZaSztuke" value=12 required/>
+        <span id="error"></span>
+
+        <label for="Wycofano">Wycofano:  *</label>
+        <input type="checkbox" name="Wycofano" id="Wycofano" value="T" required/>
+        <span id="error"></span>
+
+        <div class="form-button">
+            <input class="form-button-submit" type="submit" value="Dodaj" />
+            <a class="form-button-cancel" href="form-details.ejs">Anuluj</a>
+        </div>
+
+    </form>
+</main>
+<%- include('../../fragments/footer.ejs')%>

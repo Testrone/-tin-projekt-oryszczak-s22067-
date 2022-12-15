@@ -1,0 +1,28 @@
+<%- include('../../fragments/header.ejs')%>
+<main>
+    <h2>Nowe zamówienie</h2>
+    <form class="form" novalidate onsubmit="return validateForm();" action="">
+
+        <label for="Klient">Klient:  *</label>
+        <input type="text" name="Klient" id="Klient" required/>
+        <span id="errorKlient"></span>
+
+
+        <label for="nipKlienta">NIP:  *</label>
+        <input type="number" name="nipKlienta" id="nipKlienta" required/>
+        <span id="errorNipKlienta"></span>
+
+        <label for="dataZamowienia">Data:  *</label>
+        <input type="date" name="dataZamowienia" id="dataZamowienia" required/>
+        <span id="errorDataZamowienia"></span>
+
+        <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+
+        <div class="form-button">
+            <input class="form-button-submit" type="submit" value="Dodaj" />
+            <a class="form-button-cancel" href="list.ejs">Anuluj</a>
+
+        </div>
+    </form>
+</main>
+<%- include('../../fragments/footer.ejs')%>

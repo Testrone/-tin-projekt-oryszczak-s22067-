@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs')%>
+        <main>
+            <h2>Szczegóły</h2>
+        
+            <form class="form">
+               
+                <label for="Klient">Klient:  <span class="symbol-required">*</span></label>
+                <select  name="Klient" id="Klient" disabled>
+                    <option>-- Wybierz Klienta --</option>
+                    <option value="1" selected>Jan Kowalski</option>
+                    <option value="2">Ten drugi dziad</option>
+                    <span></span>
+                </select>
+                <span id="error"></span>
+                <label for="Produkt">Produkt:  <span class="symbol-required">*</span></label>
+                <select  name="Produkt" id="Produkt" disabled>
+                    <option>-- Wybierz Produkt --</option>
+                    <option value="1" selected>Burak</option>
+                    <option value="2">Marchewka</option> 
+                    <span></span>
+                </select>
+                <span id="error"></span>
+                <label for="CenaZaSztuke">Ilość:  <span class="symbol-required">*</label>
+                <input type="number" name="CenaZaSztuke" id="CenaZaSztuke" value=450 disabled/>
+                <span></span>
+                <label for="Wycofano">Rabat:  <span class="symbol-required">*</label>
+                <input type="checkbox" name="Wycofano" id="Wycofano" value="charset" disabled/>
+                <span></span>
+            </form>
+          
+            
+            <div>
+                <p><a class="list-actions-button-edit" href="form-edit.ejs">Edytuj</a></p>
+                <p><a class="list-actions-button-details" href="list.ejs">Powrót</a></p>
+            </div>
+            
+        </main>
+
+<%- include('../../fragments/footer.ejs')%>

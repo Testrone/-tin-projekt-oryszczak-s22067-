@@ -1,0 +1,61 @@
+<%- include('../../fragments/header.ejs')%>
+        <main>
+            <h2>Szczegóły Zamówienia</h2>
+        
+            <from class="form">
+              
+                <label for="Klient">Klient:<span class="symbol-required">*</label>
+                <input type="text" name="Klient" value="Jan" id="Klient" disabled />
+                <span ></span>
+                <label for="NiPKlienta">NIP:<span class="symbol-required">*</label>
+                <input type="number" name="NiPKlienta" value=1234 id="NiPKlienta" disabled />
+                <span ></span>
+                <label for="dataZamówienia">Data Zamówienia:<span class="symbol-required">*</label>
+                <input type="date" name="dataZamówienia" value="2010-10-10" id="dataZamówienia" disabled />
+                <span ></span>
+                <div>
+                    <p><a class="list-actions-button-edit" href="form-edit.ejs">Edytuj</a></p>
+                </div>
+            
+            </from>
+            
+            <h3>Szczegóły Zamówień Klienta</h3>
+            
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Cena za sztuke</th>
+                        <th>Wycofano</th>
+                        <th>Szczegóły Zamówienia</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr>
+                        <td>Burak</td>
+                        <td>1.5</td>
+                        <td>T</td>
+                        <td><ul class="list-actions">
+                            <a class="list-actions-button-details" href="../SzczegolyZamowienia/form-details.ejs"><span class="material-symbols-outlined">info</span></a>
+                          </ul>
+                          </td>
+                    </tr>
+                    <tr>
+                        <td>Marchewka</td>
+                        <td>2</td>
+                        <td>N</td>
+                        <td><ul class="list-actions">
+                            <a class="list-actions-button-details" href="../SzczegolyZamowienia/form-details.ejs"><span class="material-symbols-outlined">info</span></a>
+                          </ul>
+                          </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div>
+                <p><a class="list-actions-button-details" href="list.ejs">Powrót</a></p>
+            </div>
+            
+        </main>
+<%- include('../../fragments/footer.ejs')%>

@@ -1,0 +1,24 @@
+<%- include('../../fragments/header.ejs')%>
+        <main>
+            <h2>Zamówienie</h2>
+          <from class="form">
+            
+            <label for="Klient">Klient:  *</label>
+            <input type="text" name="Klient" id="Klient" value="Jan" required/>
+            <span id="error"></span>
+           
+            <label for="NiPKlienta">NIP:  *</label>
+            <input type="number" name="NiPKlienta" id="NiPKlienta" value=1234 required/>
+            <span id="error"></span>
+
+            <label for="dataZamówienia">Data:  *</label>
+            <input type="date" name="dataZamówienia" id="dataZamówienia" value="2010-10-10" required/>
+            <span id="error"></span>
+
+            <div class="form-button">
+                <input class="form-button-submit" type="submit" value="Dodaj" />
+                <a class="form-button-cancel" href="form-details.ejs">Anuluj</a>
+            </div>
+          </from>
+        </main>
+<%- include('../../fragments/footer.ejs')%>

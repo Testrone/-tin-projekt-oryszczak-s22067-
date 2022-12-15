@@ -1,0 +1,48 @@
+<%- include('../../fragments/header.ejs')%>
+<main>
+
+    <h2>Produkt</h2>
+
+    <form class="form">
+        <label for="Nazwa">Nazwa:<span class="symbol-required"></span>*</label>
+        <input type="text" name="Nazwa" value="Burak" id="Nazwa" disabled />
+        <span ></span>
+
+        <label for="Cena">Cena:<span class="symbol-required"></span>*</label>
+        <input type="number" name="Cena" value="1.5" id="Cena" disabled />
+        <span ></span>
+        <div>
+            <p><a class="list-actions-button-edit" href="form-edit.ejs">Edytuj</a></p>
+        </div>
+    </form>
+    <% if (formMode =='showDetails' || formMode =='edit') {%>
+
+        <h2>Szczegóły Zamówienia</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Klient</th>
+                <th>NIP Klienta</th>
+                <th>Data zamówienia</th>
+                <th>Szczegóły Zamówienia</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let e of pro.szczegolyZamowowienia) {%>
+            <tr>
+                <td><a href="/zamowienie/details/<%=e.zamowienie._id%>"><%= e.zamowienie.klient%></a></td>
+                <td>e.Ilosc</td>
+                <td>e.Rabat</td>
+            </tr>
+            <% } %>>
+            </tbody>
+        </table>
+    <% } %>>
+    <div>
+        <p><a class="list-actions-button-details" href="list.ejs">Powrót</a></p>
+        <p> <a class="list-actions-button-details" href="../SzczegolyZamowienia/form-details.ejs"><span class="material-symbols-outlined">info</span></a></p>
+    </div>
+
+</main>
+
+<%- include('../../fragments/footer.ejs')%>

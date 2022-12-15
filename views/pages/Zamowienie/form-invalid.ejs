@@ -1,0 +1,27 @@
+<%- include('../../fragments/header.ejs')%>
+        <main>
+            <h2>Nowe zamówienie</h2>
+            <from class="form">
+           
+            <label for="Klient">Klient: <span class="symbol-required">*</span></label>
+            <input type="text" name="Klient" id="Klient" class="error-input" required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+           
+            <label for="NiPKlienta">NIP: <span class="symbol-required">*</span></label>
+            <input type="number" name="NiPKlienta" id="NiPKlienta" class="error-input" required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+
+            <label for="dataZamówienia">Data: <span class="symbol-required">*</span></label>
+            <input type="date" name="dataZamówienia" id="dataZamówienia"  class="error-input"required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+        
+        
+            <div>
+                <p id="errorsSummary" class="errors-text">Błędy w formularzu</p>
+                <input type="submit" value="Dodaj" class="form-button-submit" />
+                <a href="list.ejs" class="form-button-cancel">Anuluj</a>
+            </div>
+       
+          </from>
+        </main>
+<%- include('../../fragments/footer.ejs')%>

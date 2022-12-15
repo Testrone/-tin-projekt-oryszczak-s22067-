@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firma Spedycyjna DEMO</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<header>
+    <h1>Firma Spedycyjna DEMO</h1>
+    <img src="/images/istockphoto-1163776288-1024x1024.jpg" alt="Firma Spedycyjna DEMO Logo" width="200" height="100">
+</header>
+<nav>
+    <ul>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
+        <li><a href="/Zamowienie" class="<%= navLocation == 'zamowienie' ? 'active' : ''%>">Zamowienie</a></li>
+        <li><a href="/Produkty" class="<%= navLocation == 'produkt' ? 'active' : ''%>">Produkt</a></li>
+        <li><a href="/SzczegolyZamowienia" class="<%= navLocation == 'szczegoly' ? 'active' : ''%>">Szczegóły zamówienia</a></li>
+    </ul>
+</nav>

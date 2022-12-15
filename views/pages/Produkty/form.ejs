@@ -1,0 +1,67 @@
+var produkt = require("../../../model/sequelize/Produkty");
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="public/js/validationProdukty.js"></script>
+    <h2><%= pageTitle %></h2>
+
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+
+        <input type="hidden" name="_id" value="<%= produkt._id %>">
+
+        <label for="Nazwa">Nazwa: *</label>
+        <input type="text" name="Nazwa" id="Nazwa" placeholder="2-60 znakow" value="<%= produkt.nazwa %>"
+               <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorNazwa"></span>
+
+        <label for="CenaZaSztuke">Cena za sztuke: *</label>
+        <input type="number" name="CenaZaSztuke" id="CenaZaSztuke" placeholder="" value="<%= produkt.cenaZaSztuke %>"
+               <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorCenaZaSztuke"></span>
+
+        <label for="Wycofano">Wycofano: *</label>
+        <input type="checkbox" name="Wycofano" id="Wycofano" placeholder="" value="<%= produkt.wycofano %>"
+               <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorWycofano"></span>
+
+        <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+
+        <% if(formMode === 'showDetails') { %>
+            <div class="form-button">+
+                <a href="/produkty/form-edit/<%= produkt._id %>" class="button-edit">Edytuj</a>
+            </div>
+        <% } %>
+    </form>
+    <% if (formMode === 'showDetails' || formMode === 'edit') { %>
+        <h2>
+            Szczegóły Zamówienia
+        </h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Klient</th>
+                <th>NIP Klienta</th>
+                <th>Data zamówienia</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let e of produkt.szczegoly) { %>
+                <tr>
+                    <td><a href="/zamowienie/form-details/<%= e.zamowienie._id %>"><%= e.zamowienie.klient %></a></td>
+                    <td>e.Ilosc</td>
+                    <td>e.Rabat</td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    <% } %>
+    <div class="form-buttons">
+        <p id="errorsSummary" class="errors-text"></p>
+        <% if (formMode !== 'showDetails') { %>
+            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+            <a class="form-button-cancel" href="/produkty">Anuluj</a>
+        <% }else { %>
+            <a class="form-button-cancel" href="/produkty">Powrót</a>
+        <% } %>
+    </div>
+</main>
+<%- include('../../fragments/footer.ejs') %>

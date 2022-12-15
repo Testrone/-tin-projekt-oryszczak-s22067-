@@ -1,0 +1,26 @@
+<%- include('../../fragments/header.ejs')%>
+        <main>
+            <h2>Nowe zamówienie</h2>
+            <form class="form">
+           
+            <label for="Nazwa" class="symbol-required">Nazwa: <span class="symbol-required">*</span></label>
+            <input type="text" name="Nazwa" id="Nazwa" value="burak"class="error-input" required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+           
+            <label for="CenaZaSztuke">Cena za sztuke: <span class="symbol-required">*</span></label>
+            <input type="number" name="CenaZaSztuke" id="CenaZaSztuke" value=12 class="error-input" required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+
+            <label for="Wycofano">Wycofano: <span class="symbol-required">*</span></label>
+            <input type="checkbox" name="Wycofano" id="Wycofano" value="T"class="error-input" required/>
+            <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+       
+
+        <div>  
+        <p id="errorsSummary" class="errors-text">Błędy w formularzu</p>
+        <input type="submit" value="Dodaj" class="form-button-submit" />
+        <a href="list.ejs" class="form-button-cancel">Anuluj</a>
+            </div>
+          </form>
+        </main>
+<%- include('../../fragments/footer.ejs')%>

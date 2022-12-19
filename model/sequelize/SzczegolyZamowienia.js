@@ -2,7 +2,7 @@ const Sequelize =require('sequelize');
 const sequelize =require('../../config/sequelize/sequelize');
 
 
-const SzczegolyZamowienia=sequelize.define('SzczegolyZamowienia',{
+const SzczegolyZamowienia=sequelize.define('OrderDetails',{
 
     _id:{
         type: Sequelize.INTEGER,

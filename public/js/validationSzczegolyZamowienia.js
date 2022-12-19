@@ -1,8 +1,8 @@
 function validateForm(){
 
-    const klient=document.getElementById('Klient');
-    const produkt=document.getElementById('Produkt');
-    const ilosc=document.getElementById('ilosc');
+    const klient=document.getElementById('zamowienie_id');
+    const produkt=document.getElementById('produkty_id');
+    const ilosc=document.getElementById('Ilosc');
 
 
     const errorKlient=document.getElementById('errorKlient');

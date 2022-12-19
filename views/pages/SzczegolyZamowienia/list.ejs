@@ -4,33 +4,34 @@
     <table class="table-list">
         <thead>
         <tr>
-            <th>NIP Klienta</th>
-            <th>Data zamówienia</th>
+            <th>Klient</th>
             <th>Nazwa Produktu</th>
-            <th>Ilość </th>
+            <th>Ilosc </th>
+            <th>Rabat </th>
             <th>Akcje</th>
         </tr>
         </thead>
         <tbody>
         <% for (let szcz of szczegoly) { %>
             <tr>
-                <td><%= szcz.nipKlienta %></td>
-                <td><%= szcz.dataZamowienia %></td>
-                <td><%= szcz.nazwa %></td>
+                <td><%= szcz.zamowienia.klient %></td>
+                <td><%= szcz.produkty.nazwa %></td>
                 <td><%= szcz.Ilosc %></td>
-
+                <td><%= szcz.Rabat %></td>
                 <td>
                     <ul class="list-actions">
-                        <li><a href="/szczegolyZamowienie/details/<%=szcz._id%>" class="list-actions-button-details">Szczegóły</a></li>
-                        <li><a href="/szczegolyZamowienie/edit/<%=szcz._id%>" class="list-actions-button-edit">Edytuj</a></li>
-                        <li><a href="/szczegolyZamowienie/delete/<%=szcz._id%>" class="list-actions-button-delete">Usuń</a></li>
-
+                        <li><a href="/szczegolyZamowienia/details/<%=szcz._id%>" class="list-actions-button-details">Szczegóły</a></li>
+                        <li><a href="/szczegolyZamowienia/edit/<%=szcz._id%>" class="list-actions-button-edit">Edytuj</a></li>
+                        <li><a href="/szczegolyZamowienia/delete/<%=szcz._id%>" class="list-actions-button-delete">Usuń</a></li>
                     </ul>
                 </td>
             </tr>
         <% } %>
         </tbody>
+
     </table>
-    <p><a href="szczegolyZamowienia/add" class="button-add">Dodaj nowe Szczegóły Zamówienia</a></p>
+
+    <p><a href="/szczegolyZamowienia/add" class="button-add">Dodaj nowe Szczegóły Zamówienia</a></p>
+
 </main>
 <%- include('../../fragments/footer.ejs')%>

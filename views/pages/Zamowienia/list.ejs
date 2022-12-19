@@ -15,7 +15,7 @@
                 <tr>
                     <td><%= zam.klient %></td>
                     <td><%= zam.nipKlienta %></td>
-                    <td><%= zam.dataZamowienia %></td>
+                    <td><%= fmt.formatDate(zam.dataZamowienia) %></td>
                     <td>
                         <ul class="list-actions">
                             <li><a href="/zamowienie/details/<%=zam._id%>" class="list-actions-button-details">Szczegóły</a></li>
@@ -27,6 +27,6 @@
                 <% } %>
             </tbody>
            </table>
-           <p><a href="zamowienie/add" class="button-add">Dodaj nowego Klienta</a></p>
+           <p><a href="/zamowienie/add" class="button-add">Dodaj nowego Klienta</a></p>
         </main>
 <%- include('../../fragments/footer.ejs')%>

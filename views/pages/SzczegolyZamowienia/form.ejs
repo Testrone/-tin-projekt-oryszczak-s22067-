@@ -1,39 +1,62 @@
 <%- include('../../fragments/header.ejs')%>
 <main>
-    <h2>Szczegóły Zamówienia</h2>
-    <form class="form" novalidate onsubmit="return validateForm();" action="">
+    <script type="application/javascript" src="/js/validationSzczegolyZamowienia.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <h2><%= pageTitle %></h2>
 
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= szczegoly._id %>">
 
-        <label for="Klient">Klient:  <span class="symbol-required">*</span></label>
-        <select  name="Klient" id="Klient" required>
-            <option selected>-- Wybierz Klienta --</option>
-            <option value="1" >Jan Kowalski</option>
-            <option value="2">Ten drugi dziad</option>
+        <label for="zamowienie_id">Klient:  <span class="symbol-required"></span></label>
+        <select id="zamowienie_id"  name="zamowienie_id" required <%=(formMode === 'showDetails') ? 'disabled' : ''%>>
+            <option value="" selected>-- Wybierz Klienta --</option>
+            <% for (let i=0; i< allZamowienie.length ;i++) {let zam =allZamowienie[i]; %>
+            <option value="<%=zam._id %>" label="<%= zam.klient%>"
+                    <%=(szczegoly._id && zam._id.toString()===szczegoly.zamowienie_id.toString()) ?'selected':''%>></option>
+            <% } %>
         </select>
         <span id="errorKlient"></span>
 
-        <label for="Produkt">Produkt:  <span class="symbol-required">*</span></label>
-        <select  name="Produkt" id="Produkt" required>
-            <option selected>-- Wybierz Produkt --</option>
-            <option value="1" >Burak</option>
-            <option value="2">Marchewka</option>
+        <label for="produkty_id">Produkt:  <span class="symbol-required"></span></label>
+
+        <select id="produkty_id"  name="produkty_id" required <%=(formMode === 'showDetails') ? 'disabled' : ''%>>
+            <option value="" selected>-- Wybierz Produkt --</option>
+            <% for (let i=0; i<allProdukty.length;i++) {let zam =allProdukty[i]; %>
+            <option value="<%=zam._id %>" label="<%= zam.nazwa%>"
+                    <%=(szczegoly._id && zam._id.toString()===szczegoly.produkty_id.toString()) ?'selected':''%>></option>
+            <% } %>
         </select>
         <span id="errorProdukt"></span>
 
-        <label for="ilosc">Ilość:  *</label>
-        <input type="number" name="ilosc" id="ilosc" value="" required/>
+        <label for="Ilosc">Ilość:  </label>
+        <input type="number" name="Ilosc" id="Ilosc" placeholder="" value="<%= szczegoly.Ilosc %>"
+                <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
         <span id="errorIlosc"></span>
 
-        <label for="Wycofano">Rabat:  *</label>
-        <input type="checkbox" name="Wycofano" id="Wycofano" value="T" required/>
-        <span id="error"></span>
+        <label for="Rabat">Rabat:  </label>
+        <input type="number" name="Rabat" id="Rabat" placeholder="" value="<%= szczegoly.Rabat %>"
+                <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorRabat"></span>
 
-        <span id="errorsSummary" class="errors-text">Pole jest wymagane</span>
+        <span id="errorsSummary" class="errors-text"></span>
 
-        <div class="form-button">
-            <input class="form-button-submit" type="submit" value="Dodaj" />
-            <a class="form-button-cancel" href="\pages\SzczegolyZamowienia\list.html">Anuluj</a>
+        <% if(formMode === 'showDetails') { %>
+            <div>
+                <a class="list-actions-button-edit" href="/szczegolyZamowienia/edit/<%= szczegoly._id %>">Edytuj</a>
+            </div>
+        <% } %>
+
+        <div>
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode !== 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
+                <a class="form-button-cancel" href="/szczegolyZamowienia">Anuluj</a>
+            <% }else { %>
+                <a class="form-button-cancel" href="/szczegolyZamowienia">Powrót</a>
+            <% } %>
         </div>
     </form>
+</main>
 </main>
 <%- include('../../fragments/footer.ejs')%>

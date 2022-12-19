@@ -11,4 +11,10 @@ router.get('/edit/:idSzczegolyZamowienia',szczegolyZamowieniaControler.showEditS
 
 router.get('/details/:idSzczegolyZamowienia',szczegolyZamowieniaControler.showSzczegolyZamowieniaDetails);
 
+router.post('/add',szczegolyZamowieniaControler.addSzczegolyZamowienia);
+
+router.post('/edit',szczegolyZamowieniaControler.updateSzczegolyZamowienia)
+
+router.get('/delete/:idSzczegolyZamowienia',szczegolyZamowieniaControler.deleteSzczegolyZamowienia);
+
 module.exports=router;

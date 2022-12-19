@@ -16,7 +16,7 @@ exports.getZamowienieById =(req, res, next)=>{
         .then(zam => {
             if(!zam) {
                 res.status(404).json({
-                    message: 'Zamowienie o numerze '+zamId+ ' nie istnieje'
+                    message: 'Zamowienia o numerze '+zamId+ ' nie istnieje'
                 })
             }else {
                 res.status(200).json(zam);
@@ -40,7 +40,7 @@ exports.updateZamowienie = (req, res, next)=>{
     const zamId = req.params.idZamowienie;
     ZamowienieRepository.updateZamowienie(zamId,req.body)
         .then(result=>{
-            res.status(200).json({message: 'Zamowienie zaktualizowane',zamowienie: result});
+            res.status(200).json({message: 'Zamowienia zaktualizowane',zamowienie: result});
         })
         .catch(err=>{
             if(!err.statusCode){
@@ -53,7 +53,7 @@ exports.deletZamowienie =(req, res, next)=>{
     const zamId=req.params.idZamowienie;
     ZamowienieRepository.deleteZamowienie(zamId)
         .then(result=>{
-            res.status(200).json({message: 'usunieto Zamowienie',zam: result});
+            res.status(200).json({message: 'usunieto Zamowienia',zam: result});
         })
         .catch(err=>{
             if(!err.statusCode){

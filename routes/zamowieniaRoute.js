@@ -12,4 +12,10 @@ router.get('/edit/:idZamowienie',zamowienieController.showEditZamowienieForm)
 
 router.get('/details/:idZamowienie',zamowienieController.showZamowienieDetails);
 
+router.post('/add',zamowienieController.addZamowienie);
+
+router.post('/edit',zamowienieController.updateZamowienie)
+
+router.get('/delete/:idZamowienie',zamowienieController.deleteZamowienie);
+
 module.exports=router;

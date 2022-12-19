@@ -1,8 +1,8 @@
 function validateForm() {
 
-    const nazwa = document.getElementById('Nazwa');
-    const cenaZaSztuke = document.getElementById('CenaZaSztuke');
-    const wycofano = document.getElementById('Wycofano');
+    const nazwa = document.getElementById('nazwa');
+    const cenaZaSztuke = document.getElementById('cenaZaSztuke');
+    const wycofano = document.getElementById('wycofano');
 
     const errorNazwa = document.getElementById('errorNazwa');
     const errorCenaZaSztuke = document.getElementById('errorCenaZaSztuke');

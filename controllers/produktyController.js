@@ -11,7 +11,7 @@ exports.showProduktylist = (req, res, next) => {
         });
 }
 exports.showAddProduktyForm = (req, res, next) => {
-    res.render('Produkty/form', {
+    res.render('pages/Produkty/form', {
         produkt: {},
         pageTitle: 'Nowy Produkt',
         formMode: 'CreateNew',
@@ -21,7 +21,7 @@ exports.showAddProduktyForm = (req, res, next) => {
     });
 }
 exports.showEditProduktyForm = (req, res, next) => {
-    const proId = req.params.proId;
+    const proId = req.params.idProdukt;
     ProduktRepository.getProduktyById(proId)
         .then(produkt => {
             res.render('pages/Produkty/form', {
@@ -35,7 +35,8 @@ exports.showEditProduktyForm = (req, res, next) => {
         });
 };
 exports.showProduktyDetails = (req, res, next) => {
-    const proId = req.params.proId;
+    const proId = req.params.idProdukt;
+
     ProduktRepository.getProduktyById(proId)
         .then(produkt => {
             res.render('pages/Produkty/form', {
@@ -46,5 +47,27 @@ exports.showProduktyDetails = (req, res, next) => {
                 navLocation: 'produkt'
             });
         });
+};
+exports.addProdukt = (req, res, next) => {
+    const proData = {...req.body}
+    ProduktRepository.createProdukty(proData)
+        .then(resoult => {
+            res.redirect('/produkty')
+        });
+};
+exports.updateProdukt = (req, res, next) => {
+    const proId = req.body._id;
+    const proData = {...req.body};
+    ProduktRepository.updateProdukty(proId, proData)
+        .then(result => {
+            res.redirect('/produkty')
+        });
+};
+exports.deleteProdukt = (req, res, next) => {
+    const proId = req.params.idProdukt;
+    ProduktRepository.deleteProdukty(proId)
+        .then(() => {
+            res.redirect('/produkty')
+        })
 };
 

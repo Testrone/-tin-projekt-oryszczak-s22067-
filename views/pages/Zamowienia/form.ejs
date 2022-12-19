@@ -1,0 +1,69 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationZamowienie.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+
+        <input type="hidden" name="_id" value="<%= zamowienie._id %>">
+
+        <label for="klient">Klient: </label>
+        <input type="text" name="klient" id="klient" placeholder="2-60 znakow" value="<%= zamowienie.klient %>"
+                <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorKlient"></span>
+
+        <label for="nipKlienta">NIP: </label>
+        <input type="number" name="nipKlienta" id="nipKlienta" placeholder="" value="<%= zamowienie.nipKlienta %>"
+                <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorNipKlienta"></span>
+
+        <label for="dataZamowienia">Data: </label>
+        <input type="date" name="dataZamowienia" id="dataZamowienia" placeholder=""
+               value="<%= fmt.formatDate(zamowienie.dataZamowienia) %>"
+                <%= (formMode === 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorDataZamowienia"></span>
+
+        <span id="errorsSummary" class="errors-text"></span>
+
+        <% if(formMode === 'showDetails') { %>
+            <div >
+                <a class="list-actions-button-edit" href="/zamowienie/edit/<%= zamowienie._id %>" >Edytuj</a>
+            </div>
+        <% } %>
+
+        <div>
+            <p id="errorsSummary" class="errors-text"></p>
+
+            <% if (formMode !== 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
+                <a class="form-button-cancel" href="/zamowienie">Anuluj</a>
+            <% }else { %>
+                <a class="form-button-cancel" href="/zamowienie">Powrót</a>
+            <% } %>
+        </div>
+    </form>
+    <% if (formMode === 'showDetails' || formMode === 'edit') { %>
+        <h2>
+            Szczegóły Zamówienia
+        </h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Cena za sztuke</th>
+                <th>Wycofano</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let e of zamowienie.szczegolyZamowienia) { %>
+                <tr>
+                    <td><a href="/produkty/details/<%= e.produkty._id %>"><%= e.produkty.nazwa %></a></td>
+                    <td><%= e.produkty.cenaZaSztuke %></td>
+                    <td><%= e.produkty.wycofano %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    <% } %>
+</main>
+<%- include('../../fragments/footer.ejs') %>

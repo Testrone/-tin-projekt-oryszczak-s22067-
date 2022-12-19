@@ -17,7 +17,7 @@ exports.getSzczegolyById =(req, res, next)=>{
         .then(pro =>{
             if(!pro){
                 res.status(404).json({
-                    message: 'Zamowienie o numerze'+zamId+ 'nie istnieje'
+                    message: 'Zamowienia o numerze'+zamId+ 'nie istnieje'
                 })
             }else {
                 res.status(200).json(pro);
@@ -41,7 +41,7 @@ exports.updateSzczegoly = (req, res, next)=>{
     const zamId = req.params.idSzczegolyZamowienia;
     SzczegolyZamowienia.updateSzczegoly(zamId,req.body)
         .then(result=>{
-            res.status(200).json({message: 'Zamowienie zaktualizowane',zamowienie: result});
+            res.status(200).json({message: 'Zamowienia zaktualizowane',zamowienie: result});
         })
         .catch(err=>{
             if(!err.statusCode){
@@ -54,7 +54,7 @@ exports.deleteSzczegoly =(req, res, next)=>{
     const proId=req.params.idSzczegolyZamowienia;
     SzczegolyZamowienia.deleteSzczegoly(proId)
         .then(result=>{
-            res.status(200).json({message: 'usunieto Zamowienie',zam: result});
+            res.status(200).json({message: 'usunieto Zamowienia',zam: result});
         })
         .catch(err=>{
             if(!err.statusCode){

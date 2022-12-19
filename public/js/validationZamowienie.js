@@ -1,26 +1,26 @@
  function validateForm() {
 
-     const Klient = document.getElementById('Klient');
+     const klient = document.getElementById('klient');
      const nipKlienta = document.getElementById('nipKlienta');
-     const Data = document.getElementById('dataZamowienia');
+     const data = document.getElementById('dataZamowienia');
 
      const errorklient = document.getElementById('errorKlient');
      const errorNipKlienta = document.getElementById('errorNipKlienta');
      const errorData = document.getElementById('errorDataZamowienia');
      const errorsSummary = document.getElementById('errorsSummary');
 
-     resetErrors([Klient, nipKlienta, Data], [errorklient, errorNipKlienta, errorData], errorsSummary)
+     resetErrors([klient, nipKlienta, data], [errorklient, errorNipKlienta, errorData], errorsSummary)
 
      let valid = true;
 
-     if (!checkRequired(Klient.value)) {
+     if (!checkRequired(klient.value)) {
          valid = false;
-         Klient.classList.add("error-input");
+         klient.classList.add("error-input");
          errorklient.innerText = "Pole jest wymagane";
 
-     } else if (!checkTextLengthRange(Klient.value, 2, 60)) {
+     } else if (!checkTextLengthRange(klient.value, 2, 60)) {
          valid = false;
-         Klient.classList.add("error-input");
+         klient.classList.add("error-input");
          errorklient.innerText = "Pole powinno zawierać od 2 do 60 znaków";
      }
 
@@ -45,13 +45,13 @@
          day = '0' + day;
      const nowString = [year, month, day].join('-');
 
-     if (!checkRequired(Data.value)) {
+     if (!checkRequired(data.value)) {
          valid = false;
-         Data.classList.add("error-input");
+         data.classList.add("error-input");
          errorData.innerText = "Pole jest wymagane";
-     } else if (!checkDate(Data.value)) {
+     } else if (!checkDate(data.value)) {
          valid = false;
-         Data.classList.add("error-input");
+         data.classList.add("error-input");
          errorData.innerText = "Pole powinno zawierać datę w formacie yyyy-mm-dd";
      }
      if (!valid) {

@@ -29,9 +29,10 @@ exports.createProdukty=(newProData) =>{
 };
 
 exports.updateProdukty = (proId, proData)=>{
-    const nazwa=proData.nazwa;
-    const cenaZaSztuke=proData.cenaZaSztuke;
-    const wycofano=proData.wycofano;
+    const nazwa=proData.Nazwa;
+    const cenaZaSztuke=proData.CenaZaSztuke;
+    const wycofano=proData.Wycofano;
+    console.log(proId,proData);
     return Produkty.update(proData,{where: {_id: proId}});
 };
 exports.deleteProdukty =(proId) =>{
